@@ -1,5 +1,12 @@
 import Matter from "matter-js";
 import Bird from "../components/Bird";
+import Floor from "../components/Floor";
+
+import { Dimensions } from 'react-native';
+import Obstacle from "../components/Obstacle";
+
+const screenHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
 
 
 export default restart => {
@@ -22,7 +29,9 @@ export default restart => {
         // Along with the engine running the world and the world itself, we are going to return certain components
         // These components are essential to the world that we are building for the flappy bird to travel in.
 
-        Bird: Bird(world, 'green', {x: 50, y: 200}, {height: 40, width: 40})
+        Bird: Bird(world, 'green', {x: 50, y: 200}, {height: 40, width: 40}),
+        Obstacle1: Obstacle(world, 'Top Obstacle 1', 'red', {x: 50, y: 200}, {height: 40, width: 40}),
+        Floor: Floor(world, 'green', {x: screenWidth / 2, y: screenHeight}, {height: 50, width: screenWidth})
     };
 }
 

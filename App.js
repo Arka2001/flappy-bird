@@ -10,12 +10,20 @@ import React, { useEffect, useState } from 'react';
 import { Dimensions, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { GameEngine } from 'react-native-game-engine';
 import entities from './entities';
+import Physics from './Physics';
 
 
 const App = () => {
+
+  const [running, setRunning] = useState(false);
+
+  useEffect(() => {
+    setRunning(true)
+  }, [])
+
   return (
     <View style={styles.container}>
-      <GameEngine style={styles.gameEngine} entities={entities()}
+      <GameEngine style={styles.gameEngine} entities={entities()} systems={[Physics]} running= {running} 
        ></GameEngine>
 
 
